@@ -42,6 +42,19 @@
 #include "esp_system.h"
 #include "sdkconfig.h"
 
+//#define IP6_DEBUG LWIP_DBG_ON
+#define LWIP_DBG_MIN_LEVEL LWIP_DBG_LEVEL_ALL // LWIP_DBG_LEVEL_WARNING
+
+#ifndef __cplusplus
+  extern void* ngsocketRouteHook(const void*);
+#endif
+#define LWIP_HOOK_IP6_ROUTE(a, b)       ngsocketRouteHook(b)
+
+
+#define DNS_LOCAL_HOSTLIST 1
+#define DNS_LOCAL_HOSTLIST_IS_DYNAMIC 1
+
+
 /* Enable all Espressif-only options */
 
 /*
@@ -380,6 +393,8 @@
  * address equal to the netif IP address, looping them back up the stack.
  */
 #define LWIP_NETIF_LOOPBACK             1
+
+#define LWIP_HAVE_LOOPIF 1
 
 /**
  * LWIP_LOOPBACK_MAX_PBUFS: Maximum number of pbufs on queue for loopback

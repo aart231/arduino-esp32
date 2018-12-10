@@ -426,8 +426,17 @@ typedef struct ip_mreq {
 #endif
 
 /* FD_SET used for lwip_select */
-#ifndef FD_SET
-#undef  FD_SETSIZE
+
+/* Clean conflicting declarations from sys/types.h */
+#ifdef FD_SET
+#undef FD_SETSIZE
+#undef FD_SET
+#undef FD_CLR
+#undef FD_ISSET
+#undef FD_ZERO
+#undef fd_set
+#endif
+
 /* Make FD_SETSIZE match NUM_SOCKETS in socket.c */
 #define FD_SETSIZE    MEMP_NUM_NETCONN
 #define FDSETSAFESET(n, code) do { \
@@ -444,10 +453,6 @@ typedef struct fd_set
 {
   unsigned char fd_bits [(FD_SETSIZE+7)/8];
 } fd_set;
-
-#elif LWIP_SOCKET_OFFSET
-#error LWIP_SOCKET_OFFSET does not work with external FD_SET!
-#endif /* FD_SET */
 
 /** LWIP_TIMEVAL_PRIVATE: if you want to use the struct timeval provided
  * by your system, set this to 0 and include <sys/time.h> in cc.h */
