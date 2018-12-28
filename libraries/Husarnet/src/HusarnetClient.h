@@ -44,7 +44,7 @@ public:
     HusarnetClient();
     HusarnetClient(int fd);
     ~HusarnetClient();
-    int connect(IPAddress ip, uint16_t port) { return 0; }
+    int connect(IPAddress ip, uint16_t port);
     int connect(IP6Address ip, uint16_t port);
     int connect(const char *host, uint16_t port);
     size_t write(uint8_t data);

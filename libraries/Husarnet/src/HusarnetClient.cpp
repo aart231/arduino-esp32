@@ -79,6 +79,12 @@ void HusarnetClient::stop()
     _connected = false;
 }
 
+int HusarnetClient::connect(IPAddress ip, uint16_t port)
+{
+    ESP_LOGE("husarnet", "Husarnet doesn't support IPv4 addresses");
+    return 0;
+}
+
 int HusarnetClient::connect(IP6Address ip, uint16_t port)
 {
     int sockfd = socket(AF_INET6, SOCK_STREAM, 0);
