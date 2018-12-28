@@ -1,4 +1,4 @@
-name=ESP32 Arduino
+name=ESP32 Arduino (Husarnet)
 version=0.0.1
 
 runtime.tools.xtensa-esp32-elf-gcc.path={runtime.platform.path}/tools/xtensa-esp32-elf
