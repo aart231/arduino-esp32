@@ -1,4 +1,4 @@
-# Arduino core for ESP32 WiFi chip
+# Arduino core for ESP32 with [Husarnet](https://husarnet.com) support
 
 [![Build Status](https://travis-ci.org/espressif/arduino-esp32.svg?branch=master)](https://travis-ci.org/espressif/arduino-esp32)
 
@@ -25,11 +25,11 @@
 
    ![screenshot](docs/arduino-ide/install/2.png)
 
-5. Install "esp32" by Husarnet.
+5. Install "esp32" by Husarion.
 
 6. Select your board in Tools > Board > ESP32 Arduino (Husarnet).
 
-7. Start coding!
+7. Start coding! There are some examples in the [examples](examples/) folder.
 
 #### Decoding exceptions
 
@@ -39,7 +39,6 @@ You can use [EspExceptionDecoder](https://github.com/me-no-dev/EspExceptionDecod
 Before reporting an issue, make sure you've searched for similar one that was already created. Also make sure to go through all the issues labelled as [for reference](https://github.com/espressif/arduino-esp32/issues?utf8=%E2%9C%93&q=is%3Aissue%20label%3A%22for%20reference%22%20).
 
 Finally, if you're sure no one else had the issue, follow the [ISSUE_TEMPLATE](docs/ISSUE_TEMPLATE.md) while reporting any issue.
-
 
 ## ESP32Dev Board PINMAP
 
