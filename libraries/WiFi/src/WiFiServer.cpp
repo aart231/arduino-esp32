@@ -19,7 +19,6 @@
 #include "WiFiServer.h"
 #include <lwip/sockets.h>
 #include <lwip/netdb.h>
-#include "esp_log.h"
 
 #undef write
 #undef close
@@ -43,14 +42,13 @@ WiFiClient WiFiServer::available(){
   if(!_listening)
     return WiFiClient();
   int client_sock;
-
   if (_accepted_sockfd >= 0) {
     client_sock = _accepted_sockfd;
     _accepted_sockfd = -1;
   }
   else {
-    struct sockaddr_in6 _client;
-    int cs = sizeof(struct sockaddr_in6);
+  struct sockaddr_in _client;
+  int cs = sizeof(struct sockaddr_in);
     client_sock = lwip_accept_r(sockfd, (struct sockaddr *)&_client, (socklen_t*)&cs);
   }
   if(client_sock >= 0){
@@ -67,26 +65,18 @@ WiFiClient WiFiServer::available(){
 void WiFiServer::begin(){
   if(_listening)
     return;
-  //struct sockaddr_in server;
-  struct sockaddr_in6 server;
-  sockfd = lwip_socket(AF_INET6, SOCK_STREAM, 0);
-  //sockfd = socket(AF_INET, SOCK_STREAM, 0);
+  struct sockaddr_in server;
+  sockfd = socket(AF_INET , SOCK_STREAM, 0);
   if (sockfd < 0)
     return;
-  memset(&server, 0, sizeof(sockaddr_in6));
-  server.sin6_family = AF_INET6;
-  server.sin6_port = htons(_port);
-  server.sin6_len = sizeof(server);
-  //server.sin_family = AF_INET;
-  //server.sin_addr.s_addr = INADDR_ANY;
-  //server.sin_port = htons(_port);
-
+  server.sin_family = AF_INET;
+  server.sin_addr.s_addr = INADDR_ANY;
+  server.sin_port = htons(_port);
   if(bind(sockfd, (struct sockaddr *)&server, sizeof(server)) < 0)
     return;
   if(listen(sockfd , _max_clients) < 0)
     return;
   fcntl(sockfd, F_SETFL, O_NONBLOCK);
-
   _listening = true;
   _noDelay = false;
   _accepted_sockfd = -1;
