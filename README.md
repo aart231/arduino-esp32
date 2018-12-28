@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/espressif/arduino-esp32.svg?branch=master)](https://travis-ci.org/espressif/arduino-esp32)
 
-### Need help or have a question? Join the chat at [![https://gitter.im/espressif/arduino-esp32](https://badges.gitter.im/espressif/arduino-esp32.svg)](https://gitter.im/espressif/arduino-esp32?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+### Need help or have a question? Ask on https://community.husarnet.com/
 
 ## Contents
 - [Development Status](#development-status)
@@ -11,23 +11,25 @@
 - [Issue/Bug report template](#issuebug-report-template)
 - [ESP32Dev Board PINMAP](#esp32dev-board-pinmap)
 
-## Development Status
-Most of the framework is implemented. Most noticable is the missing analogWrite. While analogWrite is on it's way, there are a few other options that you can use:
-- 16 channels [LEDC](cores/esp32/esp32-hal-ledc.h) which is PWM
-- 8 channels [SigmaDelta](cores/esp32/esp32-hal-sigmadelta.h) which uses SigmaDelta modulation
-- 2 channels [DAC](cores/esp32/esp32-hal-dac.h) which gives real analog output
-
 ## Installation Instructions
 
-- Using Arduino IDE
-  + [Instructions for Windows](docs/arduino-ide/windows.md)
-  + [Instructions for Mac](docs/arduino-ide/mac.md)
-  + [Instructions for Debian/Ubuntu Linux](docs/arduino-ide/debian_ubuntu.md)
-  + [Instructions for Fedora](docs/arduino-ide/fedora.md)
-  + [Instructions for openSUSE](docs/arduino-ide/opensuse.md)
-- [Using PlatformIO](docs/platformio.md)
-- [Building with make](docs/make.md)
-- [Using as ESP-IDF component](docs/esp-idf_component.md)
+1. Install and launch latest [Arduino IDE](https://www.arduino.cc)
+
+2. Click on File > Preferences.
+
+3. Enter "https://files.husarion.com/arduino/package_esp32_index.json" in "Additional Board Manager URLs":
+
+   ![screenshot](docs/arduino-ide/install/1.png)
+
+4. Launch Board Manager (Tools > Board > Board Manager).
+
+   ![screenshot](docs/arduino-ide/install/2.png)
+
+5. Install "esp32" by Husarnet.
+
+6. Select your board in Tools > Board > ESP32 Arduino (Husarnet).
+
+7. Start coding!
 
 #### Decoding exceptions
 
