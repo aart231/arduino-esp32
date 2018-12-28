@@ -1,14 +1,12 @@
 #include <WiFi.h>
 #include <Husarnet.h>
-
-WiFiServer server(80);
+HusarnetServer server(80);
 
 void setup() {
-  // put your setup code here, to run once:
-
   Serial.begin(115200);
 
-  WiFi.begin("[ssid]", "[password]");
+  // you need to change this to you wifi login data
+  WiFi.begin("[ssid]", "[pass]");
 
   while (WiFi.status() != WL_CONNECTED) {
         delay(500);
@@ -16,9 +14,7 @@ void setup() {
   }
   Serial.println("connected to wifi!");
 
-  // setup the Husarnet
-  WebSetup::start();
-  delay(2000);
+  Husarnet.start();
 
   server.begin();
   if (!server) {
@@ -27,7 +23,7 @@ void setup() {
 }
 
 void loop() {
-  WiFiClient client = server.available();
+  auto client = server.available();
   if (client) {
     Serial.println("new client");
 
