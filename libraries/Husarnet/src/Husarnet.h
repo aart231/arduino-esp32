@@ -10,7 +10,7 @@ struct _Husarnet {
     void start();
 
     // Provides join code. Use before Husarnet.start().
-    void joinIfNeeded(const char* joinCodeHost, const char* joinCode);
+    void join(const char* joinCode, const char* hostname="");
 };
 
 extern _Husarnet Husarnet;

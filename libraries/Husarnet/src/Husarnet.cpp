@@ -6,7 +6,7 @@ _Husarnet Husarnet;
 namespace WebSetup {
 void start(std::string confpath, std::string userAgent);
 extern std::string joinCode;
-extern std::string joinCodeHost;
+extern std::string joinAsHostname;
 }
 
 static bool alreadyStarted = false;
@@ -18,8 +18,8 @@ void _Husarnet::start() {
     delay(1000);
 }
 
-void _Husarnet::joinIfNeeded(const char* joinCodeHost, const char* joinCode) {
+void _Husarnet::join(const char* joinCode, const char* hostname) {
     assert(!alreadyStarted);
     WebSetup::joinCode = joinCode;
-    WebSetup::joinCodeHost = joinCodeHost;
+    WebSetup::joinAsHostname = hostname;
 }
